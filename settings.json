@@ -1,0 +1,84 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx markdownlint-cli --disable MD013 -- \"**/*.md\" || $(exit 2)"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "python3 /Users/jud/.claude/status.py"
+  },
+  "spinnerVerbs": {
+    "mode": "replace",
+    "verbs": [
+      "Taking the hobbits to Isengard",
+      "Eating second breakfast",
+      "Speaking friend and entering",
+      "Lighting the beacons of Gondor",
+      "Consulting the palantír",
+      "Crossing the Bridge of Khazad-dûm",
+      "Mustering the Rohirrim",
+      "Searching the archives of Minas Tirith",
+      "Brewing an Ent-draught",
+      "Sneaking past the Black Gate",
+      "Smoking pipe-weed in the Shire",
+      "Boiling, mashing, and sticking in a stew",
+      "Riding the eagles",
+      "Tossing the dwarf",
+      "Reforging Andúril",
+      "Engaging the warp drive",
+      "Programming the holodeck",
+      "Venting drive plasma",
+      "Reversing the polarity",
+      "Rerouting through the main deflector",
+      "Scanning for life signs",
+      "Hailing on all frequencies",
+      "Modulating the shield harmonics",
+      "Running a level 3 diagnostic",
+      "Compensating for temporal anomalies",
+      "Realigning the dilithium matrix",
+      "Replicating tea, Earl Grey, hot",
+      "Beaming down to the surface",
+      "Diverting power to the shields",
+      "Adjusting the Heisenberg compensators",
+      "Making the Kessel Run",
+      "Bullseyeing womp rats",
+      "Modifying the hyperdrive",
+      "Searching for the droids",
+      "Training on Dagobah",
+      "Negotiating with Jawas",
+      "Assembling a lightsaber",
+      "Consulting the Jedi archives",
+      "Flying casual",
+      "Powering up the Death Star",
+      "Navigating an asteroid field",
+      "Shooting first",
+      "Sensing a disturbance in the Force",
+      "Transmitting the Death Star plans",
+      "Parking the Millennium Falcon",
+      "Assembling the Avengers",
+      "Snapping the Infinity Gauntlet",
+      "Calibrating the arc reactor",
+      "Opening a sling ring portal",
+      "Lifting Mjolnir",
+      "Summoning the Bifrost",
+      "Running the Time Heist",
+      "Reversing the Quantum Realm",
+      "Charging the Tesseract",
+      "Activating the Vibranium shields",
+      "Negotiating the Sokovia Accords",
+      "Suiting up the Iron Legion",
+      "Downloading Vision's neural network",
+      "Brewing Pym Particles",
+      "Wielding all six Infinity Stones"
+    ]
+  }
+}
