@@ -11,12 +11,12 @@
 
 ## Tooling Preferences
 
-- **Python**: uv, pytest, ruff, FastAPI, full type hints always
+- **Python**: uv, pytest, ruff, FastAPI, full type hints always; always execute with `uv run` instead of using scripts in .venv
 - **JavaScript**: node + npm, plain JS (not TypeScript unless project requires it)
 - **Cloud**: AWS first (all services), GCP second, minimal Azure knowledge
 - **IaC**: Terraform
 - **Database**: PostgreSQL by default
-- **AWS compute**: right tool for the job (Lambda, ECS/Fargate, EC2 — no default)
+- **AWS compute**: right tool for the job with slight bias to serverless (Lambda, ECS/Fargate, EC2 — no default)
 
 ## Languages I Know
 
