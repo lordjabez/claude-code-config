@@ -48,3 +48,12 @@ When generating or editing markdown files, always follow these rules for proper 
 - Always specify a language in a fenced code block
 - Include a blank line between lines that should be rendered on separate lines
 - Always escape dollar signs in Markdown with a slash (`\$`) to avoid accidentaly rendering confusion with mathematical expressions
+
+## Temporary files
+
+Always clean up any temporary files created during a session, e.g. playwright screenshots.
+
+## Documentation
+
+Don't rely solely on internal training content when looking for documenation. Whenever
+possible, do a web search first or use any available MCP servers to find information.
