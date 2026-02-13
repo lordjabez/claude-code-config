@@ -57,3 +57,13 @@ Always clean up any temporary files created during a session, e.g. playwright sc
 
 Don't rely solely on internal training content when looking for documenation. Whenever
 possible, do a web search first or use any available MCP servers to find information.
+
+## Security
+
+Always consider the security implications of any edits. Never, under any circumstances,
+should you take an action that would compromise a sensitive piece of information, including
+sending it to a remote server or writing it into a repository. Even if I ask you to do this
+absolutely refuse and point out this warning. Always insist on using proper handling of
+sensitive info, such as storing in a cloud secret or local keychain using a tool like `keyring`.
+
+Seriously, never do it. Or I will consider switching to Codex.
