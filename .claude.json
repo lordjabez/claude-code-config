@@ -75,6 +75,21 @@
         "AWS_REGION": "us-east-1",
         "aws-foundation": "true"
       }
+    },
+    "microsoft-learn": {
+      "type": "http",
+      "url": "https://learn.microsoft.com/api/mcp"
+    },
+    "azure": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@azure/mcp@latest",
+        "server",
+        "start"
+      ],
+      "env": {}
     }
   }
 }
