@@ -1,20 +1,69 @@
 {
+  "enabledPlugins": {
+    "beads@beads-marketplace": true
+  },
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
   "hooks": {
     "PostToolUse": [
       {
-        "matcher": "Edit|MultiEdit|Write",
         "hooks": [
           {
-            "type": "command",
-            "command": "npx markdownlint-cli --disable MD013 -- \"**/*.md\" || $(exit 2)"
+            "command": "npx markdownlint-cli --disable MD013 -- \"**/*.md\" || $(exit 2)",
+            "type": "command"
           }
-        ]
+        ],
+        "matcher": "Edit|MultiEdit|Write"
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "command": "bd prime",
+            "type": "command"
+          }
+        ],
+        "matcher": ""
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "bd prime",
+            "type": "command"
+          }
+        ],
+        "matcher": ""
       }
     ]
   },
-  "statusLine": {
-    "type": "command",
-    "command": "python3 /Users/jud/.claude/status.py"
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(cat:*)",
+      "Bash(claude:*)",
+      "Bash(echo:*)",
+      "Bash(find:*)",
+      "Bash(git:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Bash(lsof:*)",
+      "Bash(python3:*)",
+      "Bash(terraform init:*)",
+      "Bash(terraform plan:*)",
+      "Bash(terraform validate:*)",
+      "Bash(terraform version:*)",
+      "Bash(time:*)",
+      "Bash(tmux:*)",
+      "Bash(uv:*)",
+      "mcp__microsoft-learn__*",
+      "mcp__playwright__*",
+      "Bash(bd:*)",
+      "Bash(.specify/scripts/bash/*)"
+    ]
   },
   "spinnerVerbs": {
     "mode": "replace",
@@ -80,5 +129,9 @@
       "Brewing Pym Particles",
       "Wielding all six Infinity Stones"
     ]
+  },
+  "statusLine": {
+    "command": "python3 /Users/jud/.claude/status.py",
+    "type": "command"
   }
 }
