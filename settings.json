@@ -61,6 +61,7 @@
       "Bash(uv:*)",
       "mcp__microsoft-learn__*",
       "mcp__playwright__*",
+      "mcp__simple-timeserver__*",
       "Bash(bd:*)",
       "Bash(.specify/scripts/bash/*)"
     ]
