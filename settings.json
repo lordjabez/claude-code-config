@@ -44,6 +44,7 @@
     "allow": [
       "WebSearch",
       "Bash(cat:*)",
+      "Bash(chmod:*)",
       "Bash(claude:*)",
       "Bash(echo:*)",
       "Bash(find:*)",
