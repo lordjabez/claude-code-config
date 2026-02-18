@@ -43,6 +43,7 @@
   "permissions": {
     "allow": [
       "WebSearch",
+      "WebFetch(domain:makingofthings.com)",
       "Bash(cat:*)",
       "Bash(chmod:*)",
       "Bash(claude:*)",
