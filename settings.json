@@ -51,6 +51,8 @@
       "Bash(docker:*)",
       "Bash(echo:*)",
       "Bash(find:*)",
+      "Bash(gh repo create:*)",
+      "Bash(gh repo list:*)",
       "Bash(gh run list:*)",
       "Bash(gh run view:*)",
       "Bash(git:*)",
