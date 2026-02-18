@@ -1,5 +1,9 @@
 # Global Claude Code Instructions
 
+## Personal Overview
+
+Technologist building both systems and organizations that are secure, scalable, cost-effective, and most of all, promote human flourishing. Well-versed in programming languages, cloud technologies, people management, and business development, especially in the public sector. Experienced with the entire engineering lifecycle, from ideation and sales, to requirements development, to architecture and implementation, to maintenance and support. Also an avid runner, amateur musician, and owner of every iteration of the Raspberry Pi.
+
 ## Working Style
 
 - Prefer simple implementations over heavy frameworks. Don't assume I want
@@ -18,27 +22,33 @@ messages, or technical documentation unless explicitly asked.
 ## My Workflow
 
 If relevant to the task at hand, an overview of Jud's workspace configuration, common
-software used, and general way of working can be found [here](workflow-profile.md).
+software used, and general way of working can be found in the [workflow profile](workflow-profile.md).
 
 ## Domain Background
 
 Public sector career: defense, elections, labor, workforce development,
 unemployment, wage and hour enforcement. Good at translating government policy
 into technical solutions. Also experienced in engineering management (teams up
-to 30, Amazon Bar Raiser).
+to 30, manager of managers, Amazon Bar Raiser). Deep election security background
+(chaired DHS Election Infrastructure Cybersecurity Working Group, participated
+in NIST standards groups). Hands-on Amazon Connect, GenAI/ML (vector stores,
+LLM-based evaluation, NL querying), and IoT experience. Comfortable with
+microservices, strangler migrations, event-driven architectures, and distributed
+systems design.
 
 ## Languages I Know
 
-- Strong: Python, JavaScript, Java
-- Familiar: C#, C++
+- Strong: Python, JavaScript, Java, Bash
+- Familiar: C#, C++, LaTeX
 
 ## Tooling Preferences
 
 - **Python**: uv, pytest, ruff, FastAPI, full type hints always; always execute with `uv run` instead of using scripts in .venv
 - **JavaScript**: node + npm, plain JS/TypeScript; avoid front-end frameworks as a default, only use if complexity demands it
-- **Cloud**: AWS first (all services), GCP second, minimal Azure knowledge
+- **Cloud**: AWS first (all services, multiple specialty certs including security, networking, data, ML), GCP second (Professional Cloud Architect level), minimal Azure knowledge
 - **IaC**: Terraform prefered, but consider CDK for AWS-specific work
-- **Database**: PostgreSQL by default, prefer to keep things simple
+- **Containers**: Docker, Kubernetes, Helm, Serverless on managed cloud services like AWS Fargate or Google Cloud Run
+- **Database/Data**: PostgreSQL by default; experienced with MySQL, MongoDB, Cassandra, Elasticsearch, BigQuery, Pandas, NumPy
 - **AWS compute**: right tool for the job with slight bias to serverless (Lambda, ECS/Fargate, EC2 — no default)
 - **Git**: I know git extremely well, and am not afraid of advanced use cases; because prefer to sign my git commits, don't try to commit anything unless guidance in the specific project says to do so.
 
