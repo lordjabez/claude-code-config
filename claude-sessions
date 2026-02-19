@@ -1,0 +1,335 @@
+#!/usr/bin/env python3
+"""List Claude Code sessions by parsing ~/.claude/projects JSONL files."""
+
+import argparse
+import json
+import os
+import subprocess
+import sys
+import time
+from datetime import datetime, timezone
+from pathlib import Path
+
+PROJECTS_DIR = Path.home() / ".claude" / "projects"
+DEBUG_DIR = Path.home() / ".claude" / "debug"
+
+
+def parse_session(filepath: Path) -> dict | None:
+    """Extract metadata from a session JSONL file."""
+    session_id = filepath.stem
+    title = None
+    slug = None
+    cwd = None
+    first_ts = None
+    last_ts = None
+    version = None
+    message_count = 0
+    first_user_text = None
+
+    with open(filepath) as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                entry = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+
+            entry_type = entry.get("type")
+
+            # custom-title is the /rename mechanism
+            if entry_type == "custom-title":
+                raw = entry.get("customTitle", "")
+                # strip trailing newlines/whitespace (sometimes has "exit" appended)
+                title = raw.split("\n")[0].strip()
+
+            # user messages carry slug, cwd, timestamp
+            if entry_type == "user":
+                ts = entry.get("timestamp")
+                if ts:
+                    if first_ts is None:
+                        first_ts = ts
+                    last_ts = ts
+                if slug is None:
+                    slug = entry.get("slug")
+                if cwd is None:
+                    cwd = entry.get("cwd")
+                if version is None:
+                    version = entry.get("version")
+                # grab first actual user text for preview
+                if first_user_text is None:
+                    msg = entry.get("message", {})
+                    parts = []
+                    for block in msg.get("content", []):
+                        if isinstance(block, str):
+                            parts.append(block)
+                        elif isinstance(block, dict) and block.get("type") == "text":
+                            parts.append(block.get("text", ""))
+                    text = "".join(parts).strip()
+                    if text and not text.startswith("[Request interrupted"):
+                        first_user_text = text
+
+            if entry_type == "assistant":
+                ts = entry.get("timestamp")
+                if ts:
+                    last_ts = ts
+                message_count += 1
+
+    if first_ts is None:
+        return None
+
+    return {
+        "session_id": session_id,
+        "title": title,
+        "slug": slug,
+        "cwd": cwd,
+        "first_ts": first_ts,
+        "last_ts": last_ts,
+        "version": version,
+        "message_count": message_count,
+        "first_user_text": first_user_text,
+        "file_size": filepath.stat().st_size,
+    }
+
+
+def folder_label(project_dir_name: str) -> str:
+    """Convert project dir name back to a readable path.
+
+    Dir names use hyphens as path separators, e.g.
+    '-Users-jud-Projects-ips-chief-of-staff' -> '/Users/jud/Projects/ips/chief-of-staff'
+
+    We reconstruct by checking which segments exist on disk.
+    """
+    if not project_dir_name.startswith("-"):
+        return project_dir_name
+
+    # Split on leading hyphen-separated tokens, then greedily reassemble
+    # by checking which paths actually exist on the filesystem.
+    raw = project_dir_name.lstrip("-")
+    parts = raw.split("-")
+    segments: list[str] = []
+    i = 0
+    while i < len(parts):
+        # try longest match first (greedy)
+        best = None
+        for j in range(len(parts), i, -1):
+            candidate = "-".join(parts[i:j])
+            test_path = "/" + "/".join(segments + [candidate]) if segments else "/" + candidate
+            if os.path.exists(test_path):
+                best = candidate
+                i = j
+                break
+        if best is None:
+            # no filesystem match; take one token
+            best = parts[i]
+            i += 1
+        segments.append(best)
+
+    return "/".join(segments)
+
+
+def get_active_session_ids() -> set[str]:
+    """Get session IDs of currently running Claude sessions.
+
+    Uses two signals:
+    - Session IDs from `claude --resume <id>` process args
+    - Debug logs in ~/.claude/debug/ being actively written (catches bare
+      `claude` processes and subagents too)
+    """
+    active = set()
+
+    # Signal 1: parse running claude processes for --resume session IDs
+    try:
+        result = subprocess.run(
+            ["ps", "-eo", "args"],
+            capture_output=True, text=True, timeout=5,
+        )
+        for line in result.stdout.splitlines():
+            line = line.strip()
+            if line.startswith("claude --resume "):
+                parts = line.split()
+                idx = parts.index("--resume")
+                if idx + 1 < len(parts):
+                    active.add(parts[idx + 1])
+    except (subprocess.SubprocessError, ValueError):
+        pass
+
+    # Signal 2: debug logs modified in the last 2 minutes
+    if DEBUG_DIR.is_dir():
+        cutoff = time.time() - 120
+        for debug_file in DEBUG_DIR.glob("*.txt"):
+            if debug_file.stat().st_mtime >= cutoff:
+                active.add(debug_file.stem)
+
+    return active
+
+
+def parse_ts(ts_str: str) -> datetime:
+    """Parse ISO timestamp string."""
+    ts_str = ts_str.replace("Z", "+00:00")
+    return datetime.fromisoformat(ts_str)
+
+
+def format_ts(ts_str: str, local: bool = True) -> str:
+    """Format timestamp for display."""
+    dt = parse_ts(ts_str)
+    if local:
+        dt = dt.astimezone()
+    return dt.strftime("%Y-%m-%d %H:%M")
+
+
+def human_size(nbytes: int) -> str:
+    """Format file size."""
+    for unit in ("B", "KB", "MB"):
+        if nbytes < 1024:
+            return f"{nbytes:.0f}{unit}" if unit == "B" else f"{nbytes:.1f}{unit}"
+        nbytes /= 1024
+    return f"{nbytes:.1f}GB"
+
+
+def truncate(text: str, width: int) -> str:
+    """Truncate text to width with ellipsis."""
+    if not text:
+        return ""
+    text = text.replace("\n", " ")
+    if len(text) <= width:
+        return text
+    return text[: width - 1] + "…"
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="List Claude Code sessions",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="Examples:\n"
+        "  claude-sessions                    # all sessions, most recent first\n"
+        "  claude-sessions -a                 # only currently running sessions\n"
+        "  claude-sessions -f chief-of-staff  # sessions for projects matching 'chief-of-staff'\n"
+        "  claude-sessions -n cos-alpha       # sessions named 'cos-alpha'\n"
+        "  claude-sessions -n cos -f ips      # combine filters\n"
+        "  claude-sessions --json             # JSON output\n"
+        "  claude-sessions -v                 # verbose: show first message preview",
+    )
+    parser.add_argument(
+        "-f",
+        "--folder",
+        help="filter by project folder (substring match, case-insensitive)",
+    )
+    parser.add_argument(
+        "-n",
+        "--name",
+        help="filter by session name/title or slug (substring match, case-insensitive)",
+    )
+    parser.add_argument(
+        "-l",
+        "--limit",
+        type=int,
+        default=0,
+        help="max number of sessions to show (0 = all)",
+    )
+    parser.add_argument(
+        "-a", "--active", action="store_true", help="only show currently running sessions"
+    )
+    parser.add_argument(
+        "-v", "--verbose", action="store_true", help="show first user message preview"
+    )
+    parser.add_argument(
+        "--json", action="store_true", help="output as JSON array"
+    )
+    parser.add_argument(
+        "--sort",
+        choices=["recent", "oldest", "size", "messages"],
+        default="recent",
+        help="sort order (default: recent)",
+    )
+    args = parser.parse_args()
+
+    if not PROJECTS_DIR.is_dir():
+        print(f"No projects directory found at {PROJECTS_DIR}", file=sys.stderr)
+        sys.exit(1)
+
+    active_ids = get_active_session_ids() if args.active else None
+
+    sessions = []
+
+    for project_dir in PROJECTS_DIR.iterdir():
+        if not project_dir.is_dir():
+            continue
+
+        project_name = project_dir.name
+        folder_path = folder_label(project_name)
+
+        # folder filter
+        if args.folder and args.folder.lower() not in project_name.lower():
+            continue
+
+        for jsonl_file in project_dir.glob("*.jsonl"):
+            # skip non-active sessions early (before expensive parse)
+            if active_ids is not None and jsonl_file.stem not in active_ids:
+                continue
+
+            session = parse_session(jsonl_file)
+            if session is None:
+                continue
+
+            session["project"] = project_name
+            session["folder"] = folder_path
+
+            # name filter: match against title or slug
+            if args.name:
+                target = args.name.lower()
+                title = (session.get("title") or "").lower()
+                slug = (session.get("slug") or "").lower()
+                if target not in title and target not in slug:
+                    continue
+
+            sessions.append(session)
+
+    # sort
+    sort_key = {
+        "recent": lambda s: s["last_ts"] or s["first_ts"] or "",
+        "oldest": lambda s: s["first_ts"] or "",
+        "size": lambda s: s["file_size"],
+        "messages": lambda s: s["message_count"],
+    }[args.sort]
+
+    reverse = args.sort != "oldest"
+    sessions.sort(key=sort_key, reverse=reverse)
+
+    if args.limit > 0:
+        sessions = sessions[: args.limit]
+
+    if not sessions:
+        print("No sessions found.", file=sys.stderr)
+        sys.exit(0)
+
+    if args.json:
+        print(json.dumps(sessions, indent=2))
+        return
+
+    # table output
+    for s in sessions:
+        name = s["title"] or s["slug"] or s["session_id"][:12]
+        started = format_ts(s["first_ts"]) if s["first_ts"] else "?"
+        last = format_ts(s["last_ts"]) if s["last_ts"] else "?"
+        msgs = s["message_count"]
+        size = human_size(s["file_size"])
+        # show folder relative to home
+        folder = s["folder"]
+        if folder.startswith("Users/jud/"):
+            folder = "~/" + folder[len("Users/jud/"):]
+        elif folder == "Users/jud":
+            folder = "~"
+
+        print(f"  {truncate(name, 30):<30}  {started}  →  {last}  {msgs:>4} msgs  {size:>7}  {folder}")
+
+        if args.verbose and s["first_user_text"]:
+            preview = truncate(s["first_user_text"], 80)
+            print(f"    └─ {preview}")
+
+    print(f"\n  {len(sessions)} session(s)")
+
+
+if __name__ == "__main__":
+    main()

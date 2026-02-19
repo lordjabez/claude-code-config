@@ -47,6 +47,7 @@
       "Bash(cat:*)",
       "Bash(chmod:*)",
       "Bash(claude:*)",
+      "Bash(claude-sessions:*)",
       "Bash(composer:*)",
       "Bash(docker:*)",
       "Bash(echo:*)",
