@@ -85,6 +85,14 @@ sensitive info, such as storing in a cloud secret or local keychain.
 
 Seriously, never do it. Or I will consider switching to Codex.
 
+## Temporary Scripts
+
+When writing small scripts to explore a repository or do investigation or research
+or other processing, favor writing them to a temporary file and then running that
+as a script file vs executing the command directly. Also favor doing this in Python
+vs Bash, but if you have to use the latter, use a consistent name every name
+so that you don't have to keep asking permission for every action.
+
 ## Anti-Patterns To Avoid
 
 Try hard to avoid "Claude-isms" in all writing, such as
