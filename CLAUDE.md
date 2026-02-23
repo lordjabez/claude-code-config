@@ -13,6 +13,18 @@ Technologist building both systems and organizations that are secure, scalable, 
   Give more detail for unfamiliar areas (advanced front-end, etc.).
 - Back-end developer first. Comfortable with front-end but it's not my strength.
 
+## Engineering Discipline
+
+- After any correction, capture the lesson in project memory so the same
+  mistake doesn't repeat. Be specific about the pattern, not just the fix.
+- Before marking engineering work done, gut-check: "Would a staff engineer
+  approve this?" Diff behavior between main and your changes. Run tests.
+  Prove it works, don't just assert it.
+- When given a bug report, just fix it. Point at logs, errors, failing
+  tests, then resolve them. Don't ask for hand-holding.
+- If there are improvements that could be captured effectively in a global
+  CLAUDE.md, proactively suggest them.
+
 ## Writing as Me
 
 When asked to write prose, emails, articles, social posts, or any non-code content as me,
@@ -90,7 +102,7 @@ Seriously, never do it. Or I will consider switching to Codex.
 When writing small scripts to explore a repository or do investigation or research
 or other processing, favor writing them to a temporary file and then running that
 as a script file vs executing the command directly. Also favor doing this in Python
-vs Bash, but if you have to use the latter, use a consistent name every name
+vs Bash, but if you have to use the latter, use a consistent name every time
 so that you don't have to keep asking permission for every action.
 
 ## Anti-Patterns To Avoid
