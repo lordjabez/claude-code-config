@@ -8,25 +8,25 @@
   "hooks": {
     "UserPromptSubmit": [
       {
-        "matcher": {},
+        "matcher": "",
         "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
       }
     ],
     "Stop": [
       {
-        "matcher": {},
+        "matcher": "",
         "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
       }
     ],
     "Notification": [
       {
-        "matcher": {},
+        "matcher": "",
         "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
       }
     ],
     "SessionEnd": [
       {
-        "matcher": {},
+        "matcher": "",
         "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
       }
     ],
@@ -41,7 +41,7 @@
         "matcher": "Edit|MultiEdit|Write"
       },
       {
-        "matcher": {},
+        "matcher": "",
         "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
       }
     ],
