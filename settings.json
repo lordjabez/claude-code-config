@@ -6,6 +6,30 @@
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
   "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": {},
+        "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": {},
+        "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": {},
+        "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": {},
+        "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
+      }
+    ],
     "PostToolUse": [
       {
         "hooks": [
@@ -15,6 +39,10 @@
           }
         ],
         "matcher": "Edit|MultiEdit|Write"
+      },
+      {
+        "matcher": {},
+        "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
       }
     ],
     "PreCompact": [
