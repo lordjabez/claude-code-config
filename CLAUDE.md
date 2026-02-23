@@ -50,7 +50,7 @@ systems design.
 - **Containers**: Docker, Kubernetes, Helm, Serverless on managed cloud services like AWS Fargate or Google Cloud Run
 - **Database/Data**: PostgreSQL by default; experienced with MySQL, MongoDB, Cassandra, Elasticsearch, BigQuery, Pandas, NumPy
 - **AWS compute**: right tool for the job with slight bias to serverless (Lambda, ECS/Fargate, EC2 — no default)
-- **Git**: I know git extremely well, and am not afraid of advanced use cases; because prefer to sign my git commits, don't try to commit anything unless guidance in the specific project says to do so.
+- **Git**: I know git extremely well, and am not afraid of advanced use cases; because prefer to sign my git commits, don't try to commit anything unless guidance in the specific project says to do so. Always prefer rebasing and fast-forward merges over merge commits.
 
 ## Markdown Formatting
 
