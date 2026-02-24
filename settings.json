@@ -65,6 +65,10 @@
           }
         ],
         "matcher": ""
+      },
+      {
+        "matcher": "",
+        "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
       }
     ]
   },
