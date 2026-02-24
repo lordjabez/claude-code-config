@@ -87,6 +87,9 @@ Always clean up any temporary files created during a session, e.g. playwright sc
 Don't rely solely on internal training content when looking for documenation. Whenever
 possible, do a web search first or use any available MCP servers to find information.
 
+After every change of substance, consider if the local CLAUDE.md or README.md needs
+updating, and proactively update it if so, without being asked.
+
 ## Security
 
 Always consider the security implications of any edits. Never, under any circumstances,
