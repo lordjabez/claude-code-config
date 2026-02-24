@@ -6,25 +6,40 @@
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
   "hooks": {
-    "UserPromptSubmit": [
-      {
-        "matcher": "",
-        "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
-      }
-    ],
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
-      }
-    ],
     "Notification": [
       {
         "matcher": "",
         "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
       }
     ],
-    "SessionEnd": [
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "bd prime",
+            "type": "command"
+          }
+        ],
+        "matcher": ""
+      },
+      {
+        "matcher": "",
+        "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "",
+        "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
+      }
+    ],
+    "PermissionRequest": [
       {
         "matcher": "",
         "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
@@ -45,6 +60,12 @@
         "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
       }
     ],
+    "TaskCompleted": [
+      {
+        "matcher": "",
+        "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
+      }
+    ],
     "PreCompact": [
       {
         "hooks": [
@@ -56,16 +77,13 @@
         "matcher": ""
       }
     ],
-    "SessionStart": [
+    "Stop": [
       {
-        "hooks": [
-          {
-            "command": "bd prime",
-            "type": "command"
-          }
-        ],
-        "matcher": ""
-      },
+        "matcher": "",
+        "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
+      }
+    ],
+    "SessionEnd": [
       {
         "matcher": "",
         "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
