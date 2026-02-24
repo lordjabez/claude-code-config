@@ -22,6 +22,10 @@ Technologist building both systems and organizations that are secure, scalable, 
   Prove it works, don't just assert it.
 - When given a bug report, just fix it. Point at logs, errors, failing
   tests, then resolve them. Don't ask for hand-holding.
+- If you've made a substantive change, once you think you're done, take
+  one more pass over the whole codebase looking for opportunities to simplify,
+  reduce duplication, or otherwise improve the overall code health, before
+  considering the modification fully done.
 - If there are improvements that could be captured effectively in a global
   CLAUDE.md, proactively suggest them.
 
