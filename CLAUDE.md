@@ -68,6 +68,12 @@ systems design.
 - **AWS compute**: right tool for the job with slight bias to serverless (Lambda, ECS/Fargate, EC2 — no default)
 - **Git**: I know git extremely well, and am not afraid of advanced use cases; because prefer to sign my git commits, don't try to commit anything unless guidance in the specific project says to do so. Always prefer rebasing and fast-forward merges over merge commits.
 
+## Dates and Times
+
+Don't assume or infer a date or time. Use the simple timeserver MCP instead, and if you have
+any further doubt, ask. Double-check date and day-of-week consistency when including dates
+in any writing.
+
 ## Markdown Formatting
 
 When generating or editing markdown files, always follow these rules for proper rendering:
