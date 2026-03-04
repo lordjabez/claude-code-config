@@ -93,6 +93,7 @@
   "permissions": {
     "allow": [
       "WebSearch",
+      "WebFetch(domain:adoption.microsoft.com)",
       "WebFetch(domain:datatracker.ietf.org)",
       "WebFetch(domain:deepwiki.com)",
       "WebFetch(domain:developer.hashicorp.com)",
