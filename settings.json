@@ -1,94 +1,6 @@
 {
-  "enabledPlugins": {
-    "beads@beads-marketplace": true
-  },
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
-  },
-  "hooks": {
-    "Notification": [
-      {
-        "matcher": "",
-        "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
-      }
-    ],
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "command": "bd prime",
-            "type": "command"
-          }
-        ],
-        "matcher": ""
-      },
-      {
-        "matcher": "",
-        "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "matcher": "",
-        "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
-      }
-    ],
-    "PreToolUse": [
-      {
-        "matcher": "",
-        "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
-      }
-    ],
-    "PermissionRequest": [
-      {
-        "matcher": "",
-        "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "hooks": [
-          {
-            "command": "npx markdownlint-cli --disable MD013 -- \"**/*.md\" || $(exit 2)",
-            "type": "command"
-          }
-        ],
-        "matcher": "Edit|MultiEdit|Write"
-      },
-      {
-        "matcher": "",
-        "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
-      }
-    ],
-    "TaskCompleted": [
-      {
-        "matcher": "",
-        "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
-      }
-    ],
-    "PreCompact": [
-      {
-        "hooks": [
-          {
-            "command": "bd prime",
-            "type": "command"
-          }
-        ],
-        "matcher": ""
-      }
-    ],
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "matcher": "",
-        "hooks": [{ "type": "command", "command": "claude-status notify", "async": true }]
-      }
-    ]
   },
   "permissions": {
     "allow": [
@@ -206,6 +118,161 @@
       "mcp__simple-timeserver__*"
     ]
   },
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "claude-status notify",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bd prime"
+          }
+        ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "claude-status notify",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "claude-status notify",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "claude-status notify",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "claude-status notify",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx markdownlint-cli --disable MD013 -- \"**/*.md\" || $(exit 2)"
+          }
+        ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "claude-status notify",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "TaskCompleted": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "claude-status notify",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bd prime"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "claude-status notify",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "claude-status notify",
+            "async": true
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "python3 /Users/jud/.claude/status.py"
+  },
+  "enabledPlugins": {
+    "beads@beads-marketplace": true,
+    "frontend-design@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "claude-code-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-code"
+      }
+    }
+  },
   "spinnerVerbs": {
     "mode": "replace",
     "verbs": [
@@ -270,9 +337,5 @@
       "Brewing Pym Particles",
       "Wielding all six Infinity Stones"
     ]
-  },
-  "statusLine": {
-    "command": "python3 /Users/jud/.claude/status.py",
-    "type": "command"
   }
 }
