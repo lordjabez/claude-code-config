@@ -1,8 +1,8 @@
 ---
 name: document
-description: Update README.md, CLAUDE.md, and other relevant documentation based on recent changes
+description: Update README.md, CLAUDE.md, and other relevant documentation
 ---
 
-Give the documentation in README.md, CLAUDE.md, and elsewhere in this folder a review and ensure
-they're up-to-date with recent changes, have all the relevant context a human and AI would require,
-and look for stale information to remove.
+Launch a subagent to give the documentation in README.md, CLAUDE.md, and anywhere else in the repo
+elsewhere in this folder a thorough review and ensure they're up-to-date with the rest of the
+repository, have all the relevant context a human and AI would require, and are free of any stale info.
