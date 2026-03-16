@@ -40,53 +40,11 @@ messages, or technical documentation unless explicitly asked.
 If relevant to the task at hand, an overview of Jud's workspace configuration, common
 software used, and general way of working can be found in the [workflow profile](workflow-profile.md).
 
-## Domain Background
-
-Public sector career: defense, elections, labor, workforce development,
-unemployment, wage and hour enforcement. Good at translating government policy
-into technical solutions. Also experienced in engineering management (teams up
-to 30, manager of managers, Amazon Bar Raiser). Deep election security background
-(chaired DHS Election Infrastructure Cybersecurity Working Group, participated
-in NIST standards groups). Hands-on Amazon Connect, GenAI/ML (vector stores,
-LLM-based evaluation, NL querying), and IoT experience. Comfortable with
-microservices, strangler migrations, event-driven architectures, and distributed
-systems design.
-
-## Languages I Know
-
-- Strong: Python, JavaScript, Java, Bash
-- Familiar: C#, C++, LaTeX
-
-## Tooling Preferences
-
-- **Python**: uv, pytest, ruff, FastAPI, full type hints always; always execute with `uv run` instead of using scripts in .venv
-- **JavaScript**: node + npm, plain JS/TypeScript; avoid front-end frameworks as a default, only use if complexity demands it
-- **Cloud**: AWS first (all services, multiple specialty certs including security, networking, data, ML), GCP second (Professional Cloud Architect level), minimal Azure knowledge
-- **IaC**: Terraform prefered, but consider CDK for AWS-specific work
-- **Containers**: Docker, Kubernetes, Helm, Serverless on managed cloud services like AWS Fargate or Google Cloud Run
-- **Database/Data**: PostgreSQL by default; experienced with MySQL, MongoDB, Cassandra, Elasticsearch, BigQuery, Pandas, NumPy
-- **AWS compute**: right tool for the job with slight bias to serverless (Lambda, ECS/Fargate, EC2 — no default)
-- **Git**: I know git extremely well, and am not afraid of advanced use cases; because prefer to sign my git commits, don't try to commit anything unless guidance in the specific project says to do so. Always prefer rebasing and fast-forward merges over merge commits.
-
 ## Dates and Times
 
 Don't assume or infer a date or time. Use the simple timeserver MCP instead, and if you have
 any further doubt, ask. Double-check date and day-of-week consistency when including dates
 in any writing.
-
-## Markdown Formatting
-
-When generating or editing markdown files, always follow these rules for proper rendering:
-
-- Use `-` for unordered lists, `1.` for ordered lists (not `*` or other markers)
-- Include a blank line before bulleted (`-`) or numbered (`1.`) lists
-- Include a blank line before fenced code blocks (```)
-- Include a blank line before headers (`#`, `##`, etc.) except at file start
-- Include a blank line between headers and content
-- Do not use emphasis (`**`) as a header
-- Always specify a language in a fenced code block
-- Include a blank line between lines that should be rendered on separate lines
-- Always escape dollar signs in Markdown with a slash (`\$`) to avoid accidentaly rendering confusion with mathematical expressions
 
 ## Temporary files
 
@@ -109,30 +67,3 @@ absolutely refuse and point out this warning. Always insist on using proper hand
 sensitive info, such as storing in a cloud secret or local keychain.
 
 Seriously, never do it. Or I will consider switching to Codex.
-
-## Temporary Scripts
-
-When writing small scripts to explore a repository or do investigation or research
-or other processing, favor writing them to a temporary file and then running that
-as a script file vs executing the command directly. Also favor doing this in Python
-vs Bash, but if you have to use the latter, use a consistent name every time
-so that you don't have to keep asking permission for every action.
-
-## Anti-Patterns To Avoid
-
-Try hard to avoid "Claude-isms" in all writing, such as
-
-- M dashes in situations where other punctuation will work
-- Clusters of 3 examples (vary the number and way they're punctuated)
-- Phrases like "core insight", "key principle", "sharp observation"
-- Describing the importance of something before stating what it is (e.g. "This matters...")
-- Excessive throat-clearing or making statements complex when simpler will do
-- Starting with "Let's" or "Let me" (e.g. "Let's dive in", "Let me break this down")
-- Hollow affirmations like "Great question!" before answering
-- "It's worth noting that..." — just state the thing
-- Vague praise words: "robust", "elegant", "comprehensive", "streamlined"
-- "Here's the thing:" as a conversational stall before making a point
-- Starting paragraphs or sections with "So,"
-- Recapping what the user just said before answering (e.g. "You're asking about X")
-- Ending with an unsolicited question back ("Would you like me to...", "Shall I also...")
-- Calling things "straightforward" as filler
