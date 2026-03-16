@@ -129,6 +129,15 @@
             "async": true
           }
         ]
+      },
+      {
+        "matcher": "permission_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/notify.sh needs_input"
+          }
+        ]
       }
     ],
     "SessionStart": [
@@ -172,6 +181,15 @@
             "type": "command",
             "command": "claude-status notify",
             "async": true
+          }
+        ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/stash_command.sh"
           }
         ]
       }
@@ -240,6 +258,15 @@
             "type": "command",
             "command": "claude-status notify",
             "async": true
+          }
+        ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/notify.sh done"
           }
         ]
       }
