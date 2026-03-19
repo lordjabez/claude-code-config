@@ -38,7 +38,6 @@ Runtime configuration including:
     from CLAUDE.md
   - `UserPromptSubmit`, `Stop`, `Notification`, `SessionEnd`, `PostToolUse`:
     Notifies `claude-status` on every significant event for external monitoring
-  - `SessionStart` and `PreCompact`: Primes the beads issue tracker context
 - **Permissions**: Pre-approved commands for common tools (git, npm, uv,
   python, docker, terraform, gh, and others) so Claude doesn't prompt
   repeatedly for routine operations

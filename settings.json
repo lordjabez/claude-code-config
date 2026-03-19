@@ -27,7 +27,6 @@
       "WebFetch(domain:www.npmjs.com)",
       "Bash(basename:*)",
       "Bash(bash:*)",
-      "Bash(bd:*)",
       "Bash(brew:*)",
       "Bash(cat:*)",
       "Bash(chmod:*)",
@@ -146,15 +145,6 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bd prime"
-          }
-        ]
-      },
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
             "command": "claude-status notify",
             "async": true
           }
@@ -239,17 +229,6 @@
         ]
       }
     ],
-    "PreCompact": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bd prime"
-          }
-        ]
-      }
-    ],
     "Stop": [
       {
         "matcher": "",
@@ -289,7 +268,6 @@
     "command": "python3 /Users/jud/.claude/status.py"
   },
   "enabledPlugins": {
-    "beads@beads-marketplace": true,
     "frontend-design@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
