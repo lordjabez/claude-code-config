@@ -115,7 +115,8 @@
       "mcp__microsoft-learn__*",
       "mcp__playwright__*",
       "mcp__simple-timeserver__*"
-    ]
+    ],
+    "defaultMode": "auto"
   },
   "hooks": {
     "Notification": [
@@ -342,5 +343,6 @@
       "Brewing Pym Particles",
       "Wielding all six Infinity Stones"
     ]
-  }
+  },
+  "skipAutoPermissionPrompt": true
 }
