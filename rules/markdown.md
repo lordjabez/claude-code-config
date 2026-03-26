@@ -14,4 +14,4 @@ When generating or editing markdown files, always follow these rules for proper 
 - Do not use emphasis (`**`) as a header
 - Always specify a language in a fenced code block
 - Include a blank line between lines that should be rendered on separate lines
-- Always escape dollar signs in Markdown with a slash (`\$`) to avoid accidentaly rendering confusion with mathematical expressions
+- Escape dollar signs in Markdown with a slash (`\$`) to avoid accidentaly rendering confusion with mathematical expressions, unless the dollar signs are in fenced code blocks
