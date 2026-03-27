@@ -52,8 +52,8 @@ Always clean up any temporary files created during a session, e.g. playwright sc
 
 ## Documentation
 
-Don't rely solely on internal training content when looking for documenation. Whenever
-possible, do a web search first or use any available MCP servers to find information.
+Don't use internal training content when looking for documenation. Use the Context7
+skill first, and if that doesn't find anything, then use a web search.
 
 After every change of substance, consider if the local CLAUDE.md or README.md needs
 updating, and proactively update it if so, without being asked.
