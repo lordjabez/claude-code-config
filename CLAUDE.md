@@ -42,9 +42,9 @@ software used, and general way of working can be found in the [workflow profile]
 
 ## Dates and Times
 
-Don't assume or infer a date or time. Use the simple timeserver MCP instead, and if you have
-any further doubt, ask. Double-check date and day-of-week consistency when including dates
-in any writing.
+Always check using the `date` command instead of inferring or assuming a date or time.
+If you have any doubt, ask. Double-check date and day-of-week consistency when including
+dates in any writing.
 
 ## Temporary files
 
