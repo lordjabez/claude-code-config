@@ -12,6 +12,7 @@ Try hard to avoid "Claude-isms" in all writing, such as
 - "It's worth noting that..." — just state the thing
 - Vague praise words: "robust", "elegant", "comprehensive", "streamlined"
 - "Here's the thing:" as a conversational stall before making a point
+- Claiming, without evidence, that "this is what no one is talking about"
 - Starting paragraphs or sections with "So,"
 - Recapping what the user just said before answering (e.g. "You're asking about X")
 - Ending with an unsolicited question back ("Would you like me to...", "Shall I also...")
