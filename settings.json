@@ -344,5 +344,6 @@
       "Wielding all six Infinity Stones"
     ]
   },
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "remoteControlAtStartup": false
 }
