@@ -113,8 +113,7 @@
       "mcp__github__*",
       "mcp__google-dev-knowledge__*",
       "mcp__microsoft-learn__*",
-      "mcp__playwright__*",
-      "mcp__simple-timeserver__*"
+      "mcp__playwright__*"
     ],
     "defaultMode": "auto"
   },
@@ -242,7 +241,7 @@
     "command": "python3 /Users/jud/.claude/status.py"
   },
   "enabledPlugins": {
-    "frontend-design@claude-plugins-official": true
+    "frontend-design@claude-plugins-official": false
   },
   "extraKnownMarketplaces": {
     "claude-code-plugins": {
