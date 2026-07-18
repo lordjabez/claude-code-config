@@ -34,8 +34,9 @@ Runtime configuration including:
 
 - **Hooks**:
   - `PostToolUse` on `Edit|MultiEdit|Write`: Runs `markdownlint-cli` against
-    all Markdown files after every file edit, enforcing the formatting rules
-    from CLAUDE.md
+    the file that was just touched, but only if it's Markdown, enforcing the
+    formatting rules from CLAUDE.md without scanning the rest of the repo
+    (e.g. `node_modules`)
   - `UserPromptSubmit`, `Stop`, `Notification`, `SessionEnd`, `PostToolUse`:
     Notifies `claude-status` on every significant event for external monitoring
 - **Permissions**: Pre-approved commands for common tools (git, npm, uv,
@@ -104,6 +105,11 @@ ln -s -t "$HOME/.claude" "$PWD/CLAUDE.md" "$PWD/settings.json" "$PWD/status.py" 
 
 The writing guide and workflow profile are referenced by relative path from
 CLAUDE.md, so the symlink is sufficient to make them accessible.
+
+`settings.json` must stay a symlink, not a copy — if `~/.claude/settings.json`
+ever becomes a plain file (e.g. from a tool that writes it directly instead of
+following the symlink), edits here stop propagating and the two silently
+drift apart.
 
 To use this config as your own, you'll need to update:
 
