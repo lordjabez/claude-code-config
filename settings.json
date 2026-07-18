@@ -117,6 +117,7 @@
     ],
     "defaultMode": "auto"
   },
+  "model": "sonnet",
   "hooks": {
     "Notification": [
       {
@@ -316,6 +317,9 @@
       "Wielding all six Infinity Stones"
     ]
   },
-  "skipAutoPermissionPrompt": true,
-  "remoteControlAtStartup": false
+  "tui": "fullscreen",
+  "skipDangerousModePermissionPrompt": true,
+  "skipWorkflowUsageWarning": true,
+  "remoteControlAtStartup": true,
+  "skipAutoPermissionPrompt": true
 }
