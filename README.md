@@ -34,9 +34,10 @@ Runtime configuration including:
 
 - **Hooks**:
   - `PostToolUse` on `Edit|MultiEdit|Write`: Runs `markdownlint-cli` against
-    the file that was just touched, but only if it's Markdown, enforcing the
-    formatting rules from CLAUDE.md without scanning the rest of the repo
-    (e.g. `node_modules`)
+    the file that was just touched, but only if it's Markdown and inside the
+    current project directory, enforcing the formatting rules from CLAUDE.md
+    without scanning the rest of the repo (e.g. `node_modules`) or choking on
+    out-of-repo paths like memory files under `~/.claude/projects/`
   - `UserPromptSubmit`, `Stop`, `Notification`, `SessionEnd`, `PostToolUse`:
     Notifies `claude-status` on every significant event for external monitoring
 - **Permissions**: Pre-approved commands for common tools (git, npm, uv,

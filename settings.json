@@ -149,7 +149,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "f=$(jq -r '.tool_input.file_path // empty'); case \"$f\" in *.md) npx markdownlint-cli --disable MD013 -- \"$f\" || $(exit 2) ;; esac"
+            "command": "f=$(jq -r '.tool_input.file_path // empty'); case \"$f\" in \"$CLAUDE_PROJECT_DIR\"/*.md) npx markdownlint-cli --disable MD013 -- \"$f\" || $(exit 2) ;; esac"
           }
         ]
       },
