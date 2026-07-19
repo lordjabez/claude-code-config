@@ -241,9 +241,6 @@
     "type": "command",
     "command": "python3 /Users/jud/.claude/status.py"
   },
-  "enabledPlugins": {
-    "frontend-design@claude-plugins-official": false
-  },
   "extraKnownMarketplaces": {
     "claude-code-plugins": {
       "source": {
@@ -321,5 +318,9 @@
   "skipDangerousModePermissionPrompt": true,
   "skipWorkflowUsageWarning": true,
   "remoteControlAtStartup": true,
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "agentPushNotifEnabled": true,
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": false
+  }
 }

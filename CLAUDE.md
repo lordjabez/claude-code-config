@@ -52,11 +52,10 @@ Always clean up any temporary files created during a session, e.g. playwright sc
 
 ## Documentation
 
-Don't use internal training content when looking for documenation. Use the Context7
-skill first, and if that doesn't find anything, then use a web search.
+Don't use internal training content when looking for documenation. Always use the find-docs skill.
 
-After every change of substance, consider if the local CLAUDE.md or README.md needs
-updating, and proactively update it if so, without being asked.
+After every change of substance, consider if the local CLAUDE.md, README.md, or other
+documentation files need updating, and proactively update them if so, without being asked.
 
 ## Security
 
