@@ -244,14 +244,7 @@
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": false
   },
-  "extraKnownMarketplaces": {
-    "claude-code-plugins": {
-      "source": {
-        "source": "github",
-        "repo": "anthropics/claude-code"
-      }
-    }
-  },
+  "extraKnownMarketplaces": {},
   "spinnerVerbs": {
     "mode": "replace",
     "verbs": [
@@ -316,6 +309,11 @@
       "Brewing Pym Particles",
       "Wielding all six Infinity Stones"
     ]
+  },
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "high"
+    }
   },
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,

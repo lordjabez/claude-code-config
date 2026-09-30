@@ -32,8 +32,9 @@ Technologist building both systems and organizations that are secure, scalable, 
 ## Writing as Me
 
 When asked to write prose, emails, articles, social posts, or any non-code content as me,
-follow [this guide](writing-guide.md). Do NOT apply these rules to code, comments, commit
-messages, or technical documentation unless explicitly asked.
+use the `write-as-jud` skill, which synthesizes the blog-derived [writing guide](writing-guide.md)
+with an email-derived one and routes to the right mode. Do NOT apply these rules to code,
+comments, commit messages, or technical documentation unless explicitly asked.
 
 ## My Workflow
 

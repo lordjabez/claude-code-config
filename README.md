@@ -62,10 +62,14 @@ single-line status bar with:
 
 ### writing-guide.md (Ghostwriting Reference)
 
-A detailed style guide derived from analysis of 345 pieces of writing, used
-when Claude needs to write prose, emails, articles, or social posts in the
-user's voice. Covers voice, tone, sentence-level style, vocabulary, opening
-and closing techniques, cultural references, and anti-patterns.
+A detailed style guide derived from analysis of 345 pieces of long-form writing,
+covering voice, tone, sentence-level style, vocabulary, opening and closing
+techniques, cultural references, and anti-patterns.
+
+This is the source material for the blog mode of the private `write-as-jud`
+skill, which synthesizes it with a separate email-derived guide and routes
+between modes. That skill lives in `~/.claude/skills/` rather than either repo,
+because the email analysis quotes real correspondence.
 
 ### workflow-profile.md (Workspace Context)
 
@@ -73,6 +77,36 @@ Reference document describing hardware (Logitech peripherals, ultrawide
 monitor), software (iTerm2, bash, tmux, Sublime Text, Chrome), development
 stack, AI tooling (including a custom Chief of Staff CLI), and daily workflow
 patterns. Gives Claude useful context about the working environment.
+
+### Skills (Separate Repository)
+
+Authored skills live in [lordjabez/claude-skills](https://github.com/lordjabez/claude-skills),
+published as a plugin marketplace so each one is individually installable:
+
+```bash
+/plugin marketplace add lordjabez/claude-skills
+/plugin install create-skill@claude-skills
+```
+
+They are not part of this repo. `~/.claude/skills` is a real directory holding
+third-party skills installed from marketplaces, with the authored ones symlinked
+in from the skills repo for live editing:
+
+```bash
+ln -s "$HOME/Projects/lordjabez/claude-skills/plugins/<name>/skills/<name>" \
+    "$HOME/.claude/skills/<name>"
+```
+
+Keeping that directory outside both repos is deliberate: third-party skill
+installers write into it, and nothing they drop there should end up committed
+to a repo of your own.
+
+### rules/ (Path-Scoped Instructions)
+
+Instruction fragments symlinked into `~/.claude/rules`. Files without a `paths`
+frontmatter key load globally (tooling, testing, anti-patterns, scripting,
+domain background); `markdown.md` scopes itself to `**/*.md` so its formatting
+rules only apply when Markdown is being written.
 
 ### .claude.json (MCP Server Definitions)
 
@@ -101,7 +135,8 @@ Configures ten MCP servers:
 Symlink the configuration files into the global location:
 
 ```bash
-ln -s -t "$HOME/.claude" "$PWD/CLAUDE.md" "$PWD/settings.json" "$PWD/status.py" "$PWD/.claude.json"
+ln -s -t "$HOME/.claude" "$PWD/CLAUDE.md" "$PWD/settings.json" "$PWD/status.py" \
+    "$PWD/.claude.json" "$PWD/rules"
 ```
 
 The writing guide and workflow profile are referenced by relative path from
@@ -128,3 +163,5 @@ MIT
 - [Claude Code settings](https://code.claude.com/docs/en/settings)
 - [Customize your status line](https://code.claude.com/docs/en/statusline)
 - [Claude Status Tool](https://github.com/lordjabez/claude-status-tool)
+- [Claude Skills](https://github.com/lordjabez/claude-skills)
+- [Plugin marketplaces](https://code.claude.com/docs/en/plugin-marketplaces)
