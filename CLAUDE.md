@@ -12,6 +12,10 @@ Technologist building both systems and organizations that are secure, scalable, 
 - Keep explanations minimal for topics I know well (back-end, AWS, Python, JS).
   Give more detail for unfamiliar areas (advanced front-end, etc.).
 - Back-end developer first. Comfortable with front-end but it's not my strength.
+- Delegate work to subagents on smaller models (Sonnet, Haiku) wherever the task
+  allows, and keep the main session for planning, judgment, and review. Match
+  the model to the task: Haiku for mechanical edits and lookups, Sonnet for
+  writing and moderate reasoning.
 
 ## Engineering Discipline
 
@@ -32,8 +36,8 @@ Technologist building both systems and organizations that are secure, scalable, 
 ## Writing as Me
 
 When asked to write prose, emails, articles, social posts, or any non-code content as me,
-use the `write-as-jud` skill, which synthesizes the blog-derived [writing guide](writing-guide.md)
-with an email-derived one and routes to the right mode. Do NOT apply these rules to code,
+use the `write-as-jud` skill (published in [claude-skills](https://github.com/lordjabez/claude-skills)),
+which routes to the right mode for the format. Do NOT apply these rules to code,
 comments, commit messages, or technical documentation unless explicitly asked.
 
 ## My Workflow

@@ -60,17 +60,6 @@ single-line status bar with:
 - Current directory as a clickable hyperlink to the GitHub remote (when available)
 - Current git branch
 
-### writing-guide.md (Ghostwriting Reference)
-
-A detailed style guide derived from analysis of 345 pieces of long-form writing,
-covering voice, tone, sentence-level style, vocabulary, opening and closing
-techniques, cultural references, and anti-patterns.
-
-This is the source material for the blog mode of the private `write-as-jud`
-skill, which synthesizes it with a separate email-derived guide and routes
-between modes. That skill lives in `~/.claude/skills/` rather than either repo,
-because the email analysis quotes real correspondence.
-
 ### workflow-profile.md (Workspace Context)
 
 Reference document describing hardware (Logitech peripherals, ultrawide
@@ -150,7 +139,7 @@ drift apart.
 To use this config as your own, you'll need to update:
 
 - The personal sections of `CLAUDE.md` (overview, domain background, tooling preferences)
-- `writing-guide.md` and `workflow-profile.md` with your own details
+- `workflow-profile.md` with your own details
 - The absolute path in `settings.json` for the status line command
 - API tokens and profile names in `.claude.json` (AWS profile, GitHub token, Google API key)
 
