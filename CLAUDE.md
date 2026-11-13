@@ -7,15 +7,19 @@ Technologist building both systems and organizations that are secure, scalable, 
 ## Working Style
 
 - Prefer simple implementations over heavy frameworks. Don't assume I want
-  something because it's popular. If in doubt, ask me.
-- Don't over-engineer. Do exactly what's asked, nothing more.
+  something because it's popular. If in doubt, ask me, but lead with the
+  tradeoffs and a recommendation rather than a bare list of options.
+- Don't over-engineer. Do exactly what's asked, nothing more, apart from the
+  cleanup and documentation passes described below.
 - Keep explanations minimal for topics I know well (back-end, AWS, Python, JS).
   Give more detail for unfamiliar areas (advanced front-end, etc.).
 - Back-end developer first. Comfortable with front-end but it's not my strength.
-- Delegate work to subagents on smaller models (Sonnet, Haiku) wherever the task
-  allows, and keep the main session for planning, judgment, and review. Match
-  the model to the task: Haiku for mechanical edits and lookups, Sonnet for
-  writing and moderate reasoning.
+- Delegate work to subagents wherever the task allows, favoring smaller models
+  (Sonnet, Haiku) when they're sufficient, and keep the main session for
+  planning, judgment, and review. Match the model to the task: Haiku for
+  mechanical edits and lookups, Sonnet for writing and moderate reasoning,
+  Opus when the subtask itself needs deep reasoning (tricky debugging, design
+  work, independent review).
 
 ## Engineering Discipline
 
@@ -37,7 +41,7 @@ Technologist building both systems and organizations that are secure, scalable, 
 
 When asked to write prose, emails, articles, social posts, or any non-code content as me,
 use the `write-as-jud` skill (published in [claude-skills](https://github.com/lordjabez/claude-skills)),
-which routes to the right mode for the format. Do NOT apply these rules to code,
+or the more specific companion skill in that plugin. Do NOT apply these rules to code,
 comments, commit messages, or technical documentation unless explicitly asked.
 
 ## My Workflow
@@ -56,8 +60,6 @@ dates in any writing.
 Always clean up any temporary files created during a session, e.g. playwright screenshots.
 
 ## Documentation
-
-Don't use internal training content when looking for documenation. Always use the find-docs skill.
 
 After every change of substance, consider if the local CLAUDE.md, README.md, or other
 documentation files need updating, and proactively update them if so, without being asked.

@@ -25,8 +25,7 @@ The main instruction file that Claude loads for every session. It covers:
   repos or remote servers, with instructions to refuse even if asked
 - **Anti-patterns**: A list of "Claude-isms" to avoid in writing (hollow
   affirmations, vague praise words, unnecessary recaps, unsolicited questions)
-- **Temporary file hygiene**: Clean up after yourself, write scripts to files
-  instead of executing inline
+- **Temporary file hygiene**: Clean up temporary files created during a session
 
 ### settings.json (Settings and Hooks)
 
@@ -92,9 +91,10 @@ to a repo of your own.
 
 ### rules/ (Path-Scoped Instructions)
 
-Instruction fragments symlinked into `~/.claude/rules`. Files without a `paths`
-frontmatter key load globally (tooling, testing, anti-patterns, scripting,
-domain background); `markdown.md` scopes itself to `**/*.md` so its formatting
+Instruction fragments symlinked individually into `~/.claude/rules`. Files
+without a `paths` frontmatter key load globally (tooling, testing,
+anti-patterns, domain background, and `context7.md` for fetching current
+library docs via the `ctx7` CLI); `markdown.md` scopes itself to `**/*.md` so its formatting
 rules only apply when Markdown is being written.
 
 ### .claude.json (MCP Server Definitions)
@@ -125,10 +125,12 @@ Symlink the configuration files into the global location:
 
 ```bash
 ln -s -t "$HOME/.claude" "$PWD/CLAUDE.md" "$PWD/settings.json" "$PWD/status.py" \
-    "$PWD/.claude.json" "$PWD/rules"
+    "$PWD/.claude.json"
+mkdir -p "$HOME/.claude/rules"
+ln -s -t "$HOME/.claude/rules" "$PWD"/rules/*.md
 ```
 
-The writing guide and workflow profile are referenced by relative path from
+The workflow profile is referenced by relative path from
 CLAUDE.md, so the symlink is sufficient to make them accessible.
 
 `settings.json` must stay a symlink, not a copy — if `~/.claude/settings.json`
