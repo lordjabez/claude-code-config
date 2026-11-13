@@ -26,10 +26,8 @@
       "WebFetch(domain:support.claude.com)",
       "WebFetch(domain:www.npmjs.com)",
       "Bash(basename:*)",
-      "Bash(bash:*)",
       "Bash(brew:*)",
       "Bash(cat:*)",
-      "Bash(chmod:*)",
       "Bash(claude-status:*)",
       "Bash(claude:*)",
       "Bash(composer:*)",
@@ -41,7 +39,6 @@
       "Bash(dotnet:*)",
       "Bash(du:*)",
       "Bash(echo:*)",
-      "Bash(env:*)",
       "Bash(file:*)",
       "Bash(find:*)",
       "Bash(gh api:*)",
@@ -63,20 +60,15 @@
       "Bash(ls:*)",
       "Bash(lsof:*)",
       "Bash(mkdir:*)",
-      "Bash(node:*)",
       "Bash(npm:*)",
-      "Bash(npx:*)",
       "Bash(pdftoppm:*)",
       "Bash(pdftotext:*)",
       "Bash(pgrep:*)",
-      "Bash(php:*)",
       "Bash(pip3:*)",
       "Bash(pip:*)",
       "Bash(printenv:*)",
       "Bash(ps:*)",
       "Bash(pwd:*)",
-      "Bash(python3:*)",
-      "Bash(python:*)",
       "Bash(realpath:*)",
       "Bash(sed:*)",
       "Bash(seq:*)",
@@ -106,7 +98,6 @@
       "Bash(wc:*)",
       "Bash(which:*)",
       "Bash(whoami:*)",
-      "Bash(xargs:*)",
       "Bash(.specify/scripts/bash/*)",
       "mcp__aws-core__*",
       "mcp__aws-docs__*",
@@ -129,6 +120,14 @@
             "async": true
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/jud/.config/iterm2/cc-status"
+          }
+        ]
       }
     ],
     "PermissionRequest": [
@@ -139,6 +138,14 @@
             "type": "command",
             "command": "claude-status notify",
             "async": true
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/jud/.config/iterm2/cc-status"
           }
         ]
       }
@@ -162,6 +169,14 @@
             "async": true
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/jud/.config/iterm2/cc-status"
+          }
+        ]
       }
     ],
     "PreToolUse": [
@@ -172,6 +187,14 @@
             "type": "command",
             "command": "claude-status notify",
             "async": true
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/jud/.config/iterm2/cc-status"
           }
         ]
       }
@@ -186,6 +209,14 @@
             "async": true
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/jud/.config/iterm2/cc-status"
+          }
+        ]
       }
     ],
     "SessionStart": [
@@ -198,6 +229,14 @@
             "async": true
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/jud/.config/iterm2/cc-status"
+          }
+        ]
       }
     ],
     "Stop": [
@@ -208,6 +247,34 @@
             "type": "command",
             "command": "claude-status notify",
             "async": true
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/jud/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/jud/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/jud/.config/iterm2/cc-status"
           }
         ]
       }
@@ -234,6 +301,14 @@
             "async": true
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/jud/.config/iterm2/cc-status"
+          }
+        ]
       }
     ]
   },
@@ -242,9 +317,20 @@
     "command": "python3 /Users/jud/.claude/status.py"
   },
   "enabledPlugins": {
-    "frontend-design@claude-plugins-official": false
+    "create-skill@claude-skills": true,
+    "update-documentation@claude-skills": true,
+    "write-as-jud@claude-skills": true,
+    "style-of-the-faith@claude-skills": true
   },
-  "extraKnownMarketplaces": {},
+  "extraKnownMarketplaces": {
+    "claude-skills": {
+      "source": {
+        "source": "github",
+        "repo": "lordjabez/claude-skills"
+      },
+      "autoUpdate": true
+    }
+  },
   "spinnerVerbs": {
     "mode": "replace",
     "verbs": [
