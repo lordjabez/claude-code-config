@@ -93,9 +93,8 @@ to a repo of your own.
 
 Instruction fragments symlinked individually into `~/.claude/rules`. Files
 without a `paths` frontmatter key load globally (tooling, testing,
-anti-patterns, domain background, and `context7.md` for fetching current
-library docs via the `ctx7` CLI); `markdown.md` scopes itself to `**/*.md` so its formatting
-rules only apply when Markdown is being written.
+anti-patterns, and domain background); `markdown.md` scopes itself to
+`**/*.md` so its formatting rules only apply when Markdown is being written.
 
 ### .claude.json (MCP Server Definitions)
 
@@ -115,7 +114,8 @@ Configures ten MCP servers:
 ## Pre-requisites
 
 - Python 3
-- npx (for markdownlint-cli and some MCP servers)
+- markdownlint-cli installed globally (`npm install -g markdownlint-cli`)
+- npx (for some MCP servers)
 - Docker (for the Terraform MCP server)
 - uvx (for AWS MCP servers)
 
